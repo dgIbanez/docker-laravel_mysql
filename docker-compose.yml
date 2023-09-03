@@ -10,7 +10,7 @@ services:
       - '8080:80'
     volumes:
       - ./laravel-app:/var/www/html
-      - ./apache-conf/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./apache_conf/000-default.conf:/etc/apache2/sites-available/000-default.conf
     depends_on:
       - mysql
   
