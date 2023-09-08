@@ -36,4 +36,13 @@
    localhost:8080/
 
 ---
-Si ya tienes un proyecto de laravel solo realiza el paso 3
+### Si ya tienes un proyecto de laravel solo realiza el paso 3
+---
+### Para comunicar laravel con mysql hay que usar estas credenciales(.env):
+```yml
+   DB_CONNECTION=mysql
+   DB_HOST=mysql
+   DB_PORT=3306
+   DB_DATABASE=laravel-db
+   DB_USERNAME=root
+   DB_PASSWORD=1234
