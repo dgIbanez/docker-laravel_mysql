@@ -8,7 +8,6 @@ RUN yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
     php-curl \
     php-json \
     php-mbstring \
-    php-mysql \
     php-tokenizer \
     php-xml \
     php-zip \
