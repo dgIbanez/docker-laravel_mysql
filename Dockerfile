@@ -1,31 +1,25 @@
-# pesa 467 MB
+FROM centos:7.9.2009
 
-FROM php:8.0-apache
+RUN yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
+    yum --enablerepo=remi-php82 install -y \
+    php \
+    openssl \
+    php-bcmath \
+    php-curl \
+    php-json \
+    php-mbstring \
+    php-mysql \
+    php-tokenizer \
+    php-xml \
+    php-zip \
+    php-mysql \
+    zip unzip httpd && \
+    yum clean all && rm -rf /var/cache/yum/*
+    
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-RUN apt-get update && \
-    apt-get install -y \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    zip \
-    unzip && \
-    docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install gd pdo pdo_mysql && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-
-RUN chown -R www-data:www-data /var/www/html
-
-# Este es para instalar composer a mano(sin usar docker hub)
-# RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-
-RUN a2enmod rewrite
-
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+CMD ["httpd", "-D", "FOREGROUND"]
