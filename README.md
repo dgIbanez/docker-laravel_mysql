@@ -29,7 +29,7 @@
 
 6. Asignar al usuario www-data(apache) a la carpeta storage
    ```bash
-   chown -R www-data:www-data storage
+   chown -R apache:apache storage
 
 7. listo, ahora salte del contenedor(ejecuta "exit") y accede por el navegador
    ```html
