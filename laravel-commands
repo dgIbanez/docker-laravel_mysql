@@ -1,0 +1,14 @@
+composer install
+
+php artisan key:generate
+
+php artisan passport:keys
+php artisan passport:client --password
+
+
+php artisan migrate
+php artisan db:seed
+
+php artisan migrate:refresh
+
+php artisan test --coverage-html reports/

@@ -12,10 +12,12 @@ RUN yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
     php-xml \
     php-zip \
     php-mysql \
+    php82-php-pecl-xdebug3 \
     zip unzip httpd && \
     yum clean all && rm -rf /var/cache/yum/*
     
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY 60-xdebug.ini /etc/php.d/
 
 WORKDIR /var/www/html
 
