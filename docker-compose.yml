@@ -5,12 +5,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: laravel-light:latest
+    image: loliconario69/laravel:v2
     ports:
       - '8080:80'
     volumes:
-      - ./laravel-app:/var/www/html
-      - ./apache_conf/laravel-site.conf:/etc/httpd/conf.d/laravel-site.conf
+      - ./laravel-app:/app
     depends_on:
       - mysql
   

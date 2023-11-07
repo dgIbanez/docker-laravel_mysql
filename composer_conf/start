@@ -1,0 +1,8 @@
+#!/bin/bash
+cd /app
+
+echo "Installing composer packages"
+composer install 
+
+echo "Running migrations"
+php artisan migrate

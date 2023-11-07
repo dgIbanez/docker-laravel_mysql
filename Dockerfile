@@ -16,9 +16,17 @@ RUN yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
     yum clean all && rm -rf /var/cache/yum/*
     
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY ./apache_conf/laravel-site.conf /etc/httpd/conf.d/
 
-WORKDIR /var/www/html
+COPY --chmod=755 ./composer_conf/start  /usr/local/bin/start
+COPY --chmod=755 ./composer_conf/createProject  /bin/createProject
+
+
+
+WORKDIR /app
 
 EXPOSE 80
 
-CMD ["httpd", "-D", "FOREGROUND"]
+CMD \
+/usr/local/bin/start; \
+httpd -D FOREGROUND;\
