@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: loliconario69/laravel:v2
+    image: laravel:test
     ports:
       - '8080:80'
     volumes:
